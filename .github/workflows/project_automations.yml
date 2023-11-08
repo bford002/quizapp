@@ -17,7 +17,7 @@ jobs:
         uses: leonsteinhaeuser/project-beta-automations@v2.1.0
         with:
           gh_token: ${{ secrets.GH_TOKEN }}
-          organization: bford002
+          user: bford002
           project_id: 1
           resource_node_id: ${{ github.event.issue.node_id }}
           status_value: Backlog # Target status
@@ -30,7 +30,7 @@ jobs:
         uses: leonsteinhaeuser/project-beta-automations@v2.1.0
         with:
           gh_token: ${{ secrets.GH_TOKEN }}
-          organization: bford002
+          user: bford002
           project_id: 1
           resource_node_id: ${{ github.event.issue.node_id }}
           status_value: Needs Investigation # Target status
@@ -44,7 +44,7 @@ jobs:
         uses: leonsteinhaeuser/project-beta-automations@v2.1.0
         with:
           gh_token: ${{ secrets.GH_TOKEN }}
-          organization: bford002
+          user: bford002
           project_id: 1
           resource_node_id: ${{ github.event.pull_request.node_id }}${{ github.event.issue.node_id }}
           status_value: Ready to Work # Target status
@@ -57,7 +57,7 @@ jobs:
         uses: leonsteinhaeuser/project-beta-automations@v2.1.0
         with:
           gh_token: ${{ secrets.GH_TOKEN }}
-          organization: bford002
+          user: bford002
           project_id: 1
           resource_node_id: ${{ github.event.issue.node_id }}
           status_value: Maintenance # Target status
