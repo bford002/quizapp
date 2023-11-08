@@ -17,8 +17,8 @@ jobs:
         uses: leonsteinhaeuser/project-beta-automations@v2.1.0
         with:
           gh_token: ${{ secrets.GH_TOKEN }}
-          organization: revelrylabs
-          project_id: 13
+          organization: bford002
+          project_id: 1
           resource_node_id: ${{ github.event.issue.node_id }}
           status_value: Backlog # Target status
   needs_investigation:
@@ -30,8 +30,8 @@ jobs:
         uses: leonsteinhaeuser/project-beta-automations@v2.1.0
         with:
           gh_token: ${{ secrets.GH_TOKEN }}
-          organization: revelrylabs
-          project_id: 13
+          organization: bford002
+          project_id: 1
           resource_node_id: ${{ github.event.issue.node_id }}
           status_value: Needs Investigation # Target status
   ready_to_work:
@@ -44,8 +44,8 @@ jobs:
         uses: leonsteinhaeuser/project-beta-automations@v2.1.0
         with:
           gh_token: ${{ secrets.GH_TOKEN }}
-          organization: revelrylabs
-          project_id: 13
+          organization: bford002
+          project_id: 1
           resource_node_id: ${{ github.event.pull_request.node_id }}${{ github.event.issue.node_id }}
           status_value: Ready to Work # Target status
   maintenance:
@@ -57,7 +57,7 @@ jobs:
         uses: leonsteinhaeuser/project-beta-automations@v2.1.0
         with:
           gh_token: ${{ secrets.GH_TOKEN }}
-          organization: revelrylabs
-          project_id: 13
+          organization: bford002
+          project_id: 1
           resource_node_id: ${{ github.event.issue.node_id }}
           status_value: Maintenance # Target status
