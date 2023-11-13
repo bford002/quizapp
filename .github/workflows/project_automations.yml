@@ -8,15 +8,6 @@ on:
     types:
       - labeled
 jobs:
-  test:
-    name: test
-    runs-on: ubuntu-latest
-    if: github.event_name == 'issues' && github.event.action == 'opened'
-    env:
-      GITHUB_CONTEXT: ${{ toJson(github) }}
-    steps:
-      - name: test
-        run: echo "$GITHUB_CONTEXT"
   # issue_opened:
   #   name: issue_opened
   #   runs-on: ubuntu-latest
@@ -35,6 +26,10 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.action == 'labeled' && github.event.label.name == 'needs investigation'
     steps:
+      - name: test
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
       - name: Move needs investigation labeled issues to Needs Investigation status
         uses: leonsteinhaeuser/project-beta-automations@v2.1.0
         with:
