@@ -11,9 +11,11 @@ jobs:
   test:
     name: test
     if: github.event_name == 'issues' && github.event.action == 'opened'
-    run: echo "$GITHUB_CONTEXT"
     env:
       GITHUB_CONTEXT: ${{ toJson(github) }}
+    steps:
+      - name: test
+        run: echo "$GITHUB_CONTEXT"
   # issue_opened:
   #   name: issue_opened
   #   runs-on: ubuntu-latest
