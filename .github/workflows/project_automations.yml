@@ -8,19 +8,27 @@ on:
     types:
       - labeled
 jobs:
-  issue_opened:
-    name: issue_opened
-    runs-on: ubuntu-latest
-    if: github.event_name == 'issues' && github.event.action == 'opened' && !(contains(github.event.issue.labels.*.name, 'maintenance') || contains(github.event.issue.labels.*.name, 'dependencies') || contains(github.event.issue.labels.*.name, 'needs investigation') || contains(github.event.issue.labels.*.name, 'approved') || github.event.issue.projects)
+  test:
+    name: test
+    if: github.event_name == 'issues' && github.event.action == 'opened'
+    env:
+      GITHUB_CONTEXT: ${{ toJson(github) }}
     steps:
-      - name: Move new issues to Backlog
-        uses: leonsteinhaeuser/project-beta-automations@v2.1.0
-        with:
-          gh_token: ${{ secrets.GH_TOKEN }}
-          user: bford002
-          project_id: 1
-          resource_node_id: ${{ github.event.issue.node_id }}
-          status_value: Backlog # Target status
+      - name: test
+        run: echo "$GITHUB_CONTEXT"
+  # issue_opened:
+  #   name: issue_opened
+  #   runs-on: ubuntu-latest
+  #   if: github.event_name == 'issues' && github.event.action == 'opened' && !(contains(github.event.issue.labels.*.name, 'maintenance') || contains(github.event.issue.labels.*.name, 'dependencies') || contains(github.event.issue.labels.*.name, 'needs investigation') || contains(github.event.issue.labels.*.name, 'approved'))
+  #   steps:
+  #     - name: Move new issues to Backlog
+  #       uses: leonsteinhaeuser/project-beta-automations@v2.1.0
+  #       with:
+  #         gh_token: ${{ secrets.GH_TOKEN }}
+  #         user: bford002
+  #         project_id: 1
+  #         resource_node_id: ${{ github.event.issue.node_id }}
+  #         status_value: Backlog # Target status
   needs_investigation:
     name: needs_investigation
     runs-on: ubuntu-latest
